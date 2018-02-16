@@ -1,0 +1,64 @@
+<style>
+table {
+border:dotted black;
+    font-family: arial, sans-serif;
+    border-collapse: separate;
+    width: 100%;
+	color:#333;
+	border-spacing:4px;
+}
+
+th {
+    border: 1px solid #cecfd5;
+    background-color:white;
+	padding: 8px;
+	vertical-align:middle;
+}
+td {
+    border: 1px solid #cecfd5;
+    padding: 8px;
+	vertical-align:middle;
+}
+
+tr:nth-child(even) {
+    background-color: #f0f0f2;
+}
+</style>
+<table name="table">
+    <thead>
+    <tr name="trow">
+
+        <th>First_name</th>
+        <th>last_name</th>
+        <th>email</th>
+        <th>birth_date</th>
+        <th>address</th>
+
+
+    </tr>
+    </thead>
+{% if user %}
+    {% for user in user %}
+<tbody>
+<tr>
+    <a href="/anup/get/{{ user.id }}/">
+
+
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.birth_date }}</td>
+        <td>{{ user.address }}</td>
+
+
+
+    </a>
+
+</tr>
+</tbody>
+    {% endfor %}
+
+ {% else %}
+    <td> None to show!!</td>
+ {% endif %}
+</table>

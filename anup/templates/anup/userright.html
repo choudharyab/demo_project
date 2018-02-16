@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+
+
+
+  </div>
+</nav>
+<form action="" class="col-sm-offset-3 col-sm-9" action="{%url 'anup:admininterface'%}" method=""POST/>
+<select name="email" method="POST" id="multiple" size="10">
+                {% for role in role %}
+        <option value="{{ user.email }}">
+            {{ role.username }} (
+            {{role.role}}
+            )
+        </option>
+    {% endfor %}
+
+</select><br>
+</form>
+   <div   style=" color:#666; margin-left:82.5%;">
+                                       <input type="checkbox" id="selecctall" title="Select All">&nbsp;&nbsp;<strong>Select All</strong>
+                                        </div>
+
+
+                                        <div class="col-md-12"  style=" color:#666; margin-top:30px;">
+
+
+
+                                         	 <div class="col-md-3"  style=" color:#666;  border:1px solid #CCC; box-shadow:3px 3px 5px #999; margin-right:5px;  margin-bottom:5px; height:300px;">
+
+
+                                       <input  class="checkbox1" style="margin-bottom:15px; margin-top:10px;" type="checkbox" value="1"
+									   name="add" ><strong>&nbsp;&nbsp;Add Display</strong><br>
+
+                                                		<input  class="checkbox1" type="checkbox"
+
+														name="purchase_order" value="1" >&nbsp;&nbsp;Purchase order<br>
+                                                           	<input  class="checkbox1" type="checkbox"
+															name="add_purchase" value="1" >&nbsp;&nbsp;Add Purchase Order <br>
+	<input  class="checkbox1" type="checkbox"
+	name="view_purchase" value="1" >&nbsp;&nbsp;View Purchase Order<br>
+	<input  class="checkbox1" type="checkbox"
+	name="purchase_invoice" value="1" >&nbsp;&nbsp;Purchase Invoice <br>
+	<input  class="checkbox1" type="checkbox" name="view_purchase_invoice" value="1" >&nbsp;&nbsp;View Purchase Invoice <br>
+
+
+                                                        <input  class="checkbox1" type="checkbox"
+														name="supplier_return"  value="1" >&nbsp;&nbsp;Supplier Return<br>
+
+                                                         <input  class="checkbox1" type="checkbox"
+														 name="add_supplier_return"  value="1" >&nbsp;&nbsp;Add Supplier Return<br>
+                                                         <input  class="checkbox1" type="checkbox"
+														 name="view_supplier_return"  value="1" >&nbsp;&nbsp;View Supplier Return<br>
+														  <input  class="checkbox1" type="checkbox"
+														  name="service_bill"  value="1" >&nbsp;&nbsp;Service Bill<br>
+														   <input  class="checkbox1" type="checkbox"
+														   name="view_service_bill"  value="1" >&nbsp;&nbsp;View Service Bill<br>
+
+                                             </div>
+                                            <div class="col-md-3"  style=" color:#666;  border:1px solid #CCC; box-shadow:3px 3px 5px #999;  margin-right:5px; margin-bottom:5px; height:300px;">
+
+                                                <input  class="checkbox1" style="margin-bottom:15px;  margin-top:10px;" name="edit" value="1" type="checkbox" ><strong>&nbsp;&nbsp;Edit </strong><br>
+                                                <input  class="checkbox1" type="checkbox" name="transaction" value="1" title="Add Branch">&nbsp;&nbsp;Transaction<br>
+	<input  class="checkbox1" type="checkbox"
+	name="stock_adjustments"
+    value="1" title="Add Branch">&nbsp;&nbsp;Warehouse transfer<br>
+	<input  class="checkbox1" type="checkbox"
+	name="warehouse_transfer"
+    value="1" title="Add Branch">&nbsp;&nbsp;View Warehouse transfer<br>
+	<input  class="checkbox1" type="checkbox" name="product" value="1" title="Add Branch">&nbsp;&nbsp;Product<br>
+<input  class="checkbox1" type="checkbox"
+name="add_product" value="1" title="Add Branch">&nbsp;&nbsp;Add Product<br>
+<input  class="checkbox1" type="checkbox"
+name="view_product" value="1" title="Add Branch">&nbsp;&nbsp;View Product<br>
+
+                                            </div>
+
+                                            <div class="col-md-3"  style=" color:#666;  border:1px solid #CCC; box-shadow:3px 3px 5px #999;  margin-right:5px;  margin-bottom:5px;height:300px;">
+
+                                                <input  class="checkbox1" style="margin-bottom:15px;  margin-top:10px;" value="1"
+												name="delete" type="checkbox"  ><strong>&nbsp;&nbsp;Delete </strong><br>
+                                                 <input  class="checkbox1" type="checkbox"    value="1" name="customerpo" >&nbsp;&nbsp;Customer PO<br>
+                                                <input  class="checkbox1" type="checkbox"    value="1" name="view_customerpo" >&nbsp;&nbsp;View Customer Po<br>
+                                                <input  class="checkbox1" type="checkbox"    value="1" name="sales_order" >&nbsp;&nbsp;Sale order<br>
+                                                <input  class="checkbox1" type="checkbox"    value="1" name="add_sales_order" >&nbsp;&nbsp;Add sale order<br>
+
+
+                                   <input  class="checkbox1" type="checkbox" value="1" name="view_sales_order" >&nbsp;&nbsp;View sale order<br>
+
+<input  class="checkbox1" type="checkbox" value="1" name="credit" >&nbsp;&nbsp;Credit Note<br>
+<input  class="checkbox1" type="checkbox" value="1" name="add_credit" >&nbsp;&nbsp;Add Credit <br>
+<input  class="checkbox1" type="checkbox" value="1" name="view_credit" >&nbsp;&nbsp;View Credit<br>
+<input  class="checkbox1" type="checkbox" value="1" name="buyer_return" >&nbsp;&nbsp;Buyer Return<br>
+<input  class="checkbox1" type="checkbox" value="1" name="add_buyer_return" >&nbsp;&nbsp;Add Buyer Return<br>
+<input  class="checkbox1" type="checkbox" value="1" name="view_buyer_return" >&nbsp;&nbsp;View Buyer Return<br>
+<input  class="checkbox1" type="checkbox" value="1" name="covering_letter" >&nbsp;&nbsp;Covering Letter<br>
+
+
+
+                                            </div>
+
+                                            <div class="col-md-2"  style=" color:#666;  border:1px solid #CCC; box-shadow:3px 3px 5px #999;  margin-right:5px;  margin-bottom:5px;height:300px;">
+
+                                            	<input  class="checkbox1" style="margin-bottom:15px;  margin-top:10px;" value="1" name="view" type="checkbox" ><strong>&nbsp;&nbsp;View</strong><br>
+
+                                            		  <input  class="checkbox1" type="checkbox" value="1" name="add_customer" >&nbsp;&nbsp;Add Customer <br>
+   <input  class="checkbox1" type="checkbox" value="1" name="view_customer" >&nbsp;&nbsp;View Customer<br>
+	<input  class="checkbox1" type="checkbox" value="1" name="export_customer" >&nbsp;&nbsp;Export <br>
+
+                                            </div>
+
+                                        </div>
+
+
+<div class="wrapper" style="padding-top:20px;text-align: center;">
+				<button class="control border rounded white hover-inverse" data-dismiss="modal" aria-hidden="true">Close</button>
+				<button class="control border rounded default hover-inverse" type="submit" >Save</button>
+			</div>
+
+
+
+
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+
+var myCheckboxes = new Array();
+$('#selecctall').click(function() {
+
+ if(this.checked) {
+            $('.checkbox1').each(function() {
+                myCheckboxes.push($(this).val());
+                this.checked = true;
+                });
+            console.log(myCheckboxes);
+ }
+});
+$('#validation').on('click',function(event){
+    event.preventDefault();
+    var id= $('#userCode').val();
+    $('#selecctall').click(function() {
+
+ if(this.checked) {
+     $('.checkbox1').each(function() {
+        myCheckboxes.push($(this).val());
+        this.checked = true;
+        myCheckboxes=this.checked;
+        console.log(myCheckboxes);
+    });
+    }
+});
+  $.ajax({
+        type:'POST',
+        url:'anup/admininterface/',
+        data:{
+        id : id ,
+        myCheckboxes : myCheckboxes
+        },
+         success : function(){
+            alert("success");
+         }
+    });
+});
+
+</script>
+<script>
+
+
+$('#validation').click(function(event){
+  id= $('#userCode').val();
+   var myCheckboxes=[];
+   $('.checkbox1').each(function() {
+   if ($(this).is(":checked")){
+        myCheckboxes.push($(this).val());
+   }
+   else{
+
+         myCheckboxes.push('0');
+
+   }
+    console.log(myCheckboxes);
+   });
+
+
+   myCheckboxes=myCheckboxes.toString();
+   console.log(myCheckboxes);
+     $.ajax({
+        type:'POST',
+        url:'anup/admininterface/',
+        data:{
+        id:id,
+        myCheckboxes : myCheckboxes
+        },
+        success : function(){
+            alert(id);
+        }
+   });
+});
+</script>
+</html>

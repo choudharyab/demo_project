@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+
+
+
+<form action="" class="col-sm-offset-3 col-sm-9" action="{%url 'anup:admininterface'%}" method=""POST/>
+<select name="email" method="POST" id="multiple">
+                {% for role in role %}
+        <option value="{{ user.email }}">
+            {{ role.username }} (
+            {{role.role}}
+            )
+        </option>
+    {% endfor %}
+
+</select><br>
+<br>
+<button onclick="select_all()">Select All</button>&nbsp;&nbsp;
+<button onclick="deselect_all()">Clear</button> &nbsp;&nbsp;
+<button onclick="edit()">modify</button> &nbsp;&nbsp;
+<a href="{%url 'display'%}"><button type="button" >Display</button></a> &nbsp;&nbsp;
+<button onclick="add()">Add</button> <br>
+
+
+    <input type="checkbox" name="vehicle" value="view" >View<br>
+    <input type="checkbox" name="vehicle" value="add" > Add <br>
+    <input type="checkbox" name="vehicle" value="delete" > Delete<br>
+    <input type="checkbox" name="vehicle" value="edit" > Edit
+    <br>
+
+
+    &nbsp;&nbsp;&nbsp;<input type="submit" id="submit"  name="submit" />
+</form>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+/*
+    $("#submit").click(function(e) {
+        e.preventDefault();
+        var foo = $('#multiple').val();
+        console.log(foo);
+
+           $.ajax({
+           type: 'POST',
+           url: 'anup/admininterface/',
+           dataType : "json",
+           data: { "email" : foo },
+           success: function(response) {
+                alert(response);
+           }
+    });
+});
+
+
+
+     function select_all()  {
+     $('input[type=checkbox]').prop('checked', true);
+  }
+
+  function deselect_all()  {
+     $('input[type=checkbox]').prop('checked', false);
+  }
+
+//$("#submit").click(function(getSelectedVals) {
+  function getSelectedVals(){
+     var tmp =[];
+     $("input[name='checkbox']").each(function() {
+     if ($(this).attr('checked'))
+     {
+        checked = ($(this).val());
+        tmp.push(checked);
+     }
+     });
+     var filters = tmp.join(',');
+     //alert(filters)
+     return filters;
+}
+*/
+var vehicle = $('input:checkbox[name=gender]:checked').val();
+
+$.ajax({
+    type: "POST",
+    url: 'anup/admininterface/',
+    data: selected,
+    cache: false
+
+});
+</script>
+</html>

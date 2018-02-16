@@ -1,0 +1,142 @@
+<html>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+<style>
+
+
+.panel-default {
+ opacity: 0.9;
+ margin-top:30px;
+}
+.form-group.last {
+ margin-bottom:30px;
+}
+</style>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading"> <strong class="">Registration Form</strong>
+
+                </div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" id="user"  method="post">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-3 control-label">Usermame</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="username" placeholder="Username" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="first_name" class="col-sm-3 control-label">Firstname</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="first_name" placeholder="firstname" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="email" placeholder="Email" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role" class="col-sm-3 control-label">Role</label>
+                            <div class="col-sm-9">
+                                <input type="role" class="form-control" id="role" placeholder="Role" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group last">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <!--<button type="submit"  id="submit" class="btn btn-success btn-sm">Submit</button>-->
+
+                                <button id="submit" class="btn btn-success btn-sm">Submit</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+
+
+     function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+               var cookie = jQuery.trim(cookies[i]);
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) == (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+             }
+          }
+      }
+ return cookieValue;
+}
+
+
+
+         $("#submit").click(function(e) {
+
+               e.preventDefault();
+              var csrftoken = getCookie('csrfoken');
+
+
+                console.log($('#username').val());
+
+               $.ajax({
+               headers: { "X-CSRFToken": getCookie("csrftoken")},
+               type:'POST',
+
+               url: 'anup/register/',
+
+               data:{
+                   username:$('#username').val(),
+
+                   first_name:$('#first_name').val(),
+
+                   email:$('#email').val(),
+
+                   role:$('#role').val()
+
+                   },
+                   success:function()
+                   {
+                   alert("we have assigned you your role");
+                   },
+                   error : function(xhr,errmsg,err) {
+                   console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+ }
+
+
+
+               });
+         });
+
+
+     </script>
+</html>

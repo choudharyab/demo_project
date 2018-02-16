@@ -1,0 +1,49 @@
+<h3>Search</h3>
+
+<input type ='text' id="search" name="search"/>
+<ul id="search-results">
+
+</ul>
+
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+
+    $('#search').on('keyup', function() {
+
+      var name = $('#search').val();
+      //alert(name);
+      if (name != "") {
+
+       $.ajax({
+           type: 'GET',
+           url: 'anup/search/',
+           data: {
+              search: name
+},
+             success: function(newData) {
+
+                 console.log(newData);
+                $('#search-results').html(newData);
+            }
+
+
+
+
+           });
+
+
+
+       }
+       else
+       {
+       }
+
+
+
+
+});
+});
+
+</script>

@@ -1,0 +1,43 @@
+<html>
+<body>
+{% if user %}
+<select name="email"  id="multiple" multiple>
+
+    {% for user in user %}
+        <option value="{{ user.email }}"> {{ user.email }} </option>
+    {% endfor %}
+</select>
+ {% else %}
+    <li> None to show!!</li>
+ {% endif %}
+<input type="submit" id="submit"  name="submit" />
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+
+    $("#submit").click(function(e) {
+        e.preventDefault();
+        var foo = $('#multiple').val();
+        console.log(foo);
+
+           $.ajax({
+           type: 'POST',
+           url: 'anup/select/',
+           dataType : "json",
+           data: { "email" : foo },
+           success: function(response) {
+                alert(response);
+           }
+    });
+});
+
+
+
+
+
+
+
+
+     </script>
+</html>

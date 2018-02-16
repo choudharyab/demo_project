@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+
+<div class="row">
+				<div class="col-md-12">
+					<div class="panel light-shadow white title-transparent rounded" data-title="<i class='fa fa-circle'></i> User List">
+						<div class="row">
+							<div class="col-md-12">
+								<h5 data-style="mb:15">Add User </h5>
+
+								<table class="table table-condensed table-hover" id="sample-table-3" style="background:#E8E8E8;">
+                <thead>
+
+                  <tr style="">
+                     <th class="hidden-xs">First Name</th>
+                     <th style="width:5px">Last Name</th>
+
+                    <th class="hidden-xs">Role</th>
+                    <th  style="width:250px">Warehouse</th>
+
+
+                    <th class="hidden-xs">Email</th>
+                    <th class="hidden-xs">Password</th>
+                    <th class="hidden-xs">Contact No</th>
+                    <th style="width:300px" ></th>
+                  </tr>
+                </thead>
+                <tbody>
+                 <form method="post" action="http://192.168.1.180/rtpharma/index.php?/account/addUser/add" id="frmS">
+
+                  <tr>
+
+                    <td><input type="text" id="txtFname" name="txtFname" class="control" style="width:95px" />
+                    <span class="email_avail_result" id="errortxtFname"></span>
+                    <td><input type="text" id="txtLname" name="txtLname" class="control" style="width:95px" />
+                    <span class="email_avail_result" id="errortxtLname"></span>
+                    </td>
+
+                      <td>
+
+                          <select  style="width:100px;margin-top:5px" name="txtRole" class="control" onChange="getCatVal(this.value)" id="txtCategories">
+                                                      <option value="0">--select--</option>
+                                                      <option value="1">ADMIN</option>
+                                                          <option value="2">ACCOUNTS</option>
+                                                          <option value="3">PURCHASE</option>
+                                                          <option value="4">SALES</option>
+                                                      </select>
+
+                        <span class="email_avail_result" id="errortxtCategories"></span>
+
+                    </td>
+                      <td>
+
+                          <select  style="width:200px;margin-top:50px" name="txtWarehouse[]" class="control" onChange="getCatVal1(this.value)" id="txtWarehouse" multiple >
+
+                                                      <option value="1">DELHI(S-8)</option>
+                                                          <option value="2">BADDI </option>
+                                                          <option value="3">HARIDWAR</option>
+                                                          <option value="4">DELHI(S-22)</option>
+                                                      </select>
+
+                        <span class="email_avail_result" id="errortxtCategories"></span>
+
+                    </td>
+
+                     <td><input type="text" id="txtEmail"  name="txtEmail" class="control"  />
+                     <span class="email_avail_result" id="erroremail" class="control"></span>
+                     </td>
+                      <td><input type="text" id="txtPassword"  name="txtPassword" class="control" style="width:130px" />
+                     <span class="email_avail_result" id="erroremail" class="control"></span>
+                     </td>
+                     <td><input type="text" id="txtmobile" name="txtmobile" style="width:110px" class="control" />
+                     <span class="email_avail_result" id="errormobile" class="control"></span>
+                     </td>
+                    <td ><input  type="submit" id="sButton" name="btnSubmit" class="control green" value="Add" onClick="return(validation());" style="line-height:15px;width:120px" /></td>
+                  </tr>
+                  </form>
+                                   <tr>
+
+                         <td>abhishek</td>
+                        <td>shrivastav</td>
+
+
+
+                        <td>SALES</td>
+                        <td>DELHI(S-8), BADDI , HARIDWAR, DELHI(S-22)</td>
+                       <td>abhishek@rtpharma.com</td>
+                        <td>123456</td>
+                        <td></td>
+
+                        <td>
+
+                     <div class="dropdown" style="width:150px">
+                <a class="dropdown-toggle rowlink" data-toggle="dropdown" href="#">
+                   <i class="zmdi zmdi-settings zmdi-hc-fw" ></i>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li>
+                        <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/editUser/14">
+                            Edit
+                        </a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" onClick="return confirm('Are you sure to delete this record')" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/deleteUser/14">
+                            Delete
+                        </a>
+                    </li>
+                     <li>
+                                             <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/userStatus/1/14">
+                            Active
+                        </a>
+                                            </li>
+                </ul>
+            </div>
+
+
+            </td>
+
+
+                  </tr>
+                                    <tr>
+
+                         <td>neha </td>
+                        <td>neha</td>
+
+
+
+                        <td></td>
+                        <td>DELHI(S-8), BADDI , HARIDWAR, DELHI(S-22)</td>
+                       <td>neha@rtpharma.com</td>
+                        <td>neha@123</td>
+                        <td></td>
+
+                        <td>
+
+                     <div class="dropdown" style="width:150px">
+                <a class="dropdown-toggle rowlink" data-toggle="dropdown" href="#">
+                   <i class="zmdi zmdi-settings zmdi-hc-fw" ></i>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li>
+                        <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/editUser/13">
+                            Edit
+                        </a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" onClick="return confirm('Are you sure to delete this record')" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/deleteUser/13">
+                            Delete
+                        </a>
+                    </li>
+                     <li>
+                                             <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/userStatus/0/13">
+                            Inactive
+                        </a>
+                                            </li>
+                </ul>
+            </div>
+
+
+            </td>
+
+
+                  </tr>
+                                    <tr>
+
+                         <td>Babita</td>
+                        <td>Babita</td>
+
+
+
+                        <td>ACCOUNTS</td>
+                        <td>DELHI(S-8), BADDI , HARIDWAR, DELHI(S-22)</td>
+                       <td>babita@rtpharma.com</td>
+                        <td>lucky1992</td>
+                        <td></td>
+
+                        <td>
+
+                     <div class="dropdown" style="width:150px">
+                <a class="dropdown-toggle rowlink" data-toggle="dropdown" href="#">
+                   <i class="zmdi zmdi-settings zmdi-hc-fw" ></i>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li>
+                        <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/editUser/12">
+                            Edit
+                        </a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" onClick="return confirm('Are you sure to delete this record')" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/deleteUser/12">
+                            Delete
+                        </a>
+                    </li>
+                     <li>
+                                             <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/userStatus/0/12">
+                            Inactive
+                        </a>
+                                            </li>
+                </ul>
+            </div>
+
+
+            </td>
+
+
+                  </tr>
+                                    <tr>
+
+                         <td>Ruby</td>
+                        <td>Ruby</td>
+
+
+
+                        <td>PURCHASE</td>
+                        <td>DELHI(S-8), BADDI , HARIDWAR, DELHI(S-22)</td>
+                       <td>ruby@rtpharma.com</td>
+                        <td>ruby@123</td>
+                        <td></td>
+
+                        <td>
+
+                     <div class="dropdown" style="width:150px">
+                <a class="dropdown-toggle rowlink" data-toggle="dropdown" href="#">
+                   <i class="zmdi zmdi-settings zmdi-hc-fw" ></i>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li>
+                        <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/editUser/11">
+                            Edit
+                        </a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" onClick="return confirm('Are you sure to delete this record')" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/deleteUser/11">
+                            Delete
+                        </a>
+                    </li>
+                     <li>
+                                             <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/userStatus/0/11">
+                            Inactive
+                        </a>
+                                            </li>
+                </ul>
+            </div>
+
+
+            </td>
+
+
+                  </tr>
+                                    <tr>
+
+                         <td>Komal</td>
+                        <td>Komal</td>
+
+
+
+                        <td>SALES</td>
+                        <td>DELHI(S-8), BADDI , HARIDWAR, DELHI(S-22)</td>
+                       <td>komal@rtpharma.com</td>
+                        <td>komal@20</td>
+                        <td></td>
+
+                        <td>
+
+                     <div class="dropdown" style="width:150px">
+                <a class="dropdown-toggle rowlink" data-toggle="dropdown" href="#">
+                   <i class="zmdi zmdi-settings zmdi-hc-fw" ></i>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li>
+                        <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/editUser/10">
+                            Edit
+                        </a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" onClick="return confirm('Are you sure to delete this record')" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/deleteUser/10">
+                            Delete
+                        </a>
+                    </li>
+                     <li>
+                                             <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/userStatus/0/10">
+                            Inactive
+                        </a>
+                                            </li>
+                </ul>
+            </div>
+
+
+            </td>
+
+
+                  </tr>
+                                    <tr>
+
+                         <td>Kanika</td>
+                        <td>Kanika</td>
+
+
+
+                        <td>SALES</td>
+                        <td>DELHI(S-8), BADDI , HARIDWAR</td>
+                       <td>kanika@rtpharma.com</td>
+                        <td>k@nika@1992</td>
+                        <td></td>
+
+                        <td>
+
+                     <div class="dropdown" style="width:150px">
+                <a class="dropdown-toggle rowlink" data-toggle="dropdown" href="#">
+                   <i class="zmdi zmdi-settings zmdi-hc-fw" ></i>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li>
+                        <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/editUser/9">
+                            Edit
+                        </a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" onClick="return confirm('Are you sure to delete this record')" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/deleteUser/9">
+                            Delete
+                        </a>
+                    </li>
+                     <li>
+                                             <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/userStatus/0/9">
+                            Inactive
+                        </a>
+                                            </li>
+                </ul>
+            </div>
+
+
+            </td>
+
+
+                  </tr>
+                                    <tr>
+
+                         <td>Kavita</td>
+                        <td>Kavita</td>
+
+
+
+                        <td>PURCHASE</td>
+                        <td>DELHI(S-8), BADDI , HARIDWAR, DELHI(S-22), DELHI(S-22)</td>
+                       <td>kavita@rtpharma.com</td>
+                        <td>rtkavita</td>
+                        <td>123456789</td>
+
+                        <td>
+
+                     <div class="dropdown" style="width:150px">
+                <a class="dropdown-toggle rowlink" data-toggle="dropdown" href="#">
+                   <i class="zmdi zmdi-settings zmdi-hc-fw" ></i>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li>
+                        <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/editUser/8">
+                            Edit
+                        </a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" onClick="return confirm('Are you sure to delete this record')" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/deleteUser/8">
+                            Delete
+                        </a>
+                    </li>
+                     <li>
+                                             <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/userStatus/0/8">
+                            Inactive
+                        </a>
+                                            </li>
+                </ul>
+            </div>
+
+
+            </td>
+
+
+                  </tr>
+                                    <tr>
+
+                         <td>TARUN PAL</td>
+                        <td>JAGGI</td>
+
+
+
+                        <td>ADMIN</td>
+                        <td>DELHI(S-8), BADDI , HARIDWAR</td>
+                       <td>tarun@rtpharma.com</td>
+                        <td>123456</td>
+                        <td></td>
+
+                        <td>
+
+                     <div class="dropdown" style="width:150px">
+                <a class="dropdown-toggle rowlink" data-toggle="dropdown" href="#">
+                   <i class="zmdi zmdi-settings zmdi-hc-fw" ></i>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li>
+                        <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/editUser/6">
+                            Edit
+                        </a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" onClick="return confirm('Are you sure to delete this record')" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/deleteUser/6">
+                            Delete
+                        </a>
+                    </li>
+                     <li>
+                                             <a tabindex="-1" href="http://192.168.1.180/rtpharma/index.php?/account/addUser/userStatus/1/6">
+                            Active
+                        </a>
+                                            </li>
+                </ul>
+            </div>
+
+
+            </td>
+
+
+                  </tr>
+                                   </tbody>
+              </table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+</div>
+</div>
+</body>
+<script>
+
+</script>
+</html>
+

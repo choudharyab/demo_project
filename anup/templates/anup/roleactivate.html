@@ -1,0 +1,9 @@
+{% autoescape off %}
+
+Hi,
+
+Please click on the link below to login with your role:
+
+http://{{ domain }}{% url 'activate2' uidb64=uid token=token %}
+
+{% endautoescape %}

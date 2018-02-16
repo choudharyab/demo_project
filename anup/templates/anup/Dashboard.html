@@ -1,0 +1,193 @@
+<html>
+<body>
+<div class="row">
+				<div class="col-md-12">
+					<div class="panel light-shadow white title-transparent rounded" data-title="<i class='fa fa-circle'></i> User List">
+
+							<!-- start: FORM VALIDATION 1 PANEL -->
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<i class="fa fa-external-link-square"></i>
+									<strong>Add User Permissions</strong>
+
+								</div>
+								<div class="panel-body">
+
+                               			<div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+
+                                            <form method="post"  id="frmselect" action="" >
+
+
+                                                    <label class="control-label">
+													<strong> User </strong>
+													</label>
+
+                                                    <select class="form-control" name="user" id="userCode">
+
+                                                    <option value="">--Select User--</option>
+                                                      {% for role in role %}
+                                                    <option value="{{ role.id }}">
+                                                     {{ role.username }} (
+                                                        {{role.role}}
+                                                       )
+                                                     </option>
+                                                     {% endfor %}
+
+
+                                                    </select>
+
+                                                  </form>
+												</div>
+
+											</div>
+
+										</div>
+
+
+
+                                        <div   style=" color:#666; margin-left:82.5%;">
+                                       <input type="checkbox" id="selecctall" title="Select All">&nbsp;&nbsp;<strong>Select All</strong>
+                                        </div>
+
+                                    <div id="member_show">
+
+
+
+              <!--------------------------------------------------View Blog------------------------------------------------>
+
+                                    <form action="#" method="post" enctype="multipart/form-data">
+
+                                      <input  type="hidden"  value="" name="id" id="id1" />
+
+
+
+
+
+
+                                          <div class="col-md-2"  style=" color:#666; ">
+                                        	<!--<input class="checkbox1" type="checkbox"  class="checkbox2" title="Add Display">&nbsp;&nbsp;Add Display-->
+                                            <input  class="checkbox1" type="checkbox"  value="1" name="add1" >&nbsp;&nbsp;Add Display
+                                            </div>
+
+
+
+                                            <div class="col-md-2"  style=" color:#666; ">
+                                            <!--<input class="checkbox1" type="checkbox"  class="checkbox2"  title="Edit Display">&nbsp;&nbsp;Edit Display-->
+                                            <input  class="checkbox1" type="checkbox"  value="1" name="add2" >&nbsp;&nbsp;Edit Display
+                                            </div>
+
+
+
+                                            <div class="col-md-2"  style=" color:#666; ">
+                                            <!--<input class="checkbox1" type="checkbox"  class="checkbox2" title="View Display">&nbsp;&nbsp;View Display-->
+                                             <input class="checkbox1" type="checkbox" value="1" name="add3" >&nbsp;&nbsp;Delete Display
+                                            </div>
+
+
+                                            <div class="col-md-2"  style=" color:#666; ">
+                                            <!--<input class="checkbox1" type="checkbox"  class="checkbox2" title="Display Note">&nbsp;&nbsp;View Display-->
+                                            <input  class="checkbox1"  type="checkbox" value="1" name="add4" >&nbsp;&nbsp;View Display
+                                            </div>
+
+
+
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+</div>
+
+<div class="row">
+											<div class="col-md-12 pull-left">
+											<span style="margin-left:380px;" >
+                                            <button class="control green" id="validation" name="submit" type="submit">Submit</button>
+
+                                            </span>
+											</div>
+										</div>
+</body>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+/*
+var myCheckboxes = new Array();
+$('#selecctall').click(function() {
+
+ if(this.checked) {
+            $('.checkbox1').each(function() {
+                myCheckboxes.push($(this).val());
+                this.checked = true;
+                });
+            console.log(myCheckboxes);
+ }
+});
+$('#validation').on('click',function(event){
+    event.preventDefault();
+    var id= $('#userCode').val();
+    $('#selecctall').click(function() {
+
+ if(this.checked) {
+     $('.checkbox1').each(function() {
+        myCheckboxes.push($(this).val());
+        this.checked = true;
+        myCheckboxes=this.checked;
+        console.log(myCheckboxes);
+    });
+    }
+});
+  $.ajax({
+        type:'POST',
+        url:'anup/admininterface/',
+        data:{
+        id : id ,
+        myCheckboxes : myCheckboxes
+        },
+         success : function(){
+            alert("success");
+         }
+    });
+});
+*/
+</script>
+<script>
+
+
+$('#validation').click(function(event){
+  id= $('#userCode').val();
+   var myCheckboxes=[];
+   $('.checkbox1').each(function() {
+   if ($(this).is(":checked")){
+        myCheckboxes.push($(this).val());
+   }
+   else{
+
+         myCheckboxes.push('0');
+
+   }
+    console.log(myCheckboxes);
+   });
+
+
+   myCheckboxes=myCheckboxes.toString();
+   console.log(myCheckboxes);
+     $.ajax({
+        type:'POST',
+        url:'anup/admininterface/',
+        data:{
+        id:id,
+        myCheckboxes : myCheckboxes
+        },
+        success : function(){
+            alert(id);
+        }
+   });
+});
+</script>
+</html>
+

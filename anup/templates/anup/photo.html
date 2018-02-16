@@ -1,0 +1,90 @@
+<html>
+<body>
+<form  method="POST" id="form" action="{%url 'adds'%}" enctype="multipart/form-data">
+  {% csrf_token %}
+      <input type="text" id="name" name="name">
+      <input type="text" id="description" name="description">
+      <input type="file" id="icon" name="icon">
+      <button id="submit">Add</button>
+  </form>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script >
+//$(document).ready(function(){
+function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+               var cookie = jQuery.trim(cookies[i]);
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) == (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+             }
+          }
+      }
+ return cookieValue;
+}
+/*
+    $("#submit").click(function(e){
+        e.preventDefault();
+         var csrftoken = getCookie('csrfoken');
+         var name = $('#name').val();
+         var description = $('#description').val();
+         var icon = $('#icon').val();
+         console.log(name);
+         console.log(description);
+         console.log(icon);
+
+            $.ajax({
+               headers: { "X-CSRFToken": getCookie("csrftoken")},
+                url: 'anup/adds/',
+                type: 'POST',
+                 processData: false,
+                 contentType: false,
+                data : {
+                 name:name,
+                 description:description,
+                 icon:icon
+
+                 },
+                 success:function(){
+                 alert("success");
+                },
+                 error: function(){}
+            });
+
+    });
+*/
+$(document).ready(function (e) {
+    $('#form').on('submit',(function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        var csrftoken = getCookie('csrfoken');
+
+        $.ajax({
+            headers: { "X-CSRFToken": getCookie("csrftoken")},
+            type:'POST',
+            url: 'anup/adds/',
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+                console.log("success");
+                console.log(data);
+            },
+            error: function(data){
+                console.log("error");
+                console.log(data);
+            }
+        });
+    }));
+
+    $("#icon").on("change", function() {
+        $("#form").submit();
+    });
+});
+</script>
+</html>

@@ -1,0 +1,182 @@
+<html>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+<style>
+
+
+.panel-default {
+ opacity: 0.9;
+ margin-top:30px;
+}
+.form-group.last {
+ margin-bottom:30px;
+}
+</style>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading"> <strong class="">Registration Form</strong>
+
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal"  method="post" enctype="multipart/form-data" action="{% url 'profile'%}">{%csrf_token%}
+                        <div class="form-group">
+                            <label for="name" class="col-sm-3 control-label">your name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="name" placeholder=" yourname" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="email" placeholder="email" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address" class="col-sm-3 control-label">Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="address" placeholder="Address" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="father_name" class="col-sm-3 control-label">Father_name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="father_name" placeholder="your father name" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mother_name" class="col-sm-3 control-label">mother name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="mother_name" placeholder="your mother name" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender" class="col-sm-3 control-label">Gender</label>
+                            <div class="col-sm-9" id="gender">
+                                <input type="radio" name="gender"   value="male"> Male<br>
+                                <input type="radio" name="gender"  value="female"> Female<br>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="image" class="col-sm-3 control-label">file upload</label>
+                            <div class="col-sm-9" >
+                                <input id="image" type="file" name="images">
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group last">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <!--<button type="submit"  id="submit" class="btn btn-success btn-sm">Submit</button>-->
+
+                                <button id="submit" class="btn btn-success btn-sm">Submit</button>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+
+function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+               var cookie = jQuery.trim(cookies[i]);
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) == (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+             }
+          }
+      }
+ return cookieValue;
+}
+
+
+
+
+         $("#submit").click(function(e) {
+
+               e.preventDefault();
+              var csrftoken = getCookie('csrfoken');
+              var name=$('#name').val();
+              var email=$('#email').val();
+              var address=$('#address').val();
+              var father_name=$('#father_name').val();
+              var mother_name=$('#mother_name').val();
+              var gender = $('input:radio[name=gender]:checked').val();
+              //var image = $("#uploadFromPC").prop("files");
+              var image = $("#image").val();
+
+               console.log(name);
+               console.log(email);
+               console.log(address);
+               console.log(father_name);
+               console.log(mother_name);
+               console.log(gender);
+               console.log(image);
+
+               $.ajax({
+                headers: { "X-CSRFToken": getCookie("csrftoken")},
+                type:'POST',
+
+                url: 'anup/profile/',
+                dataType: 'script',
+                cache: false,
+                contentType: false,
+                processData: false,
+
+
+               data:{
+                   name:name,
+                   email:email,
+                  // birth_date:$('#birth_date').val(),
+                   address:address,
+                   father_name:father_name,
+                   mother_name:mother_name,
+                   image:image,
+                   gender:gender,
+
+                   },
+
+
+                   success: function(){
+                   alert("success");
+                   } ,
+                   error: function(){}
+
+
+
+               });
+         });
+
+
+     </script>
+</html>
